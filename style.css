@@ -17,21 +17,27 @@ thead{
     border-color: black;
     border-width: 2px;
     padding: 0px;
-    background-color: grey;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-weight: 600;
+    
 }
 
 #classes td{
     background-color: azure;
-
+    color: #00589b;
     margin: 0%;
-    padding: 0%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    font-weight: 700;
 }
 
 #classes th{
     background-color: #00589b;
-
+    color: white;
     margin: 0%;
-    padding: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 header{
