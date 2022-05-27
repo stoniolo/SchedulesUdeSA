@@ -1,20 +1,50 @@
 body{
-    background-color: #00589b;
+    background-color: azure;
 }
+
 thead{
     background-color: aqua;
 }
 
 #logo{
-    height: 10%;
-    width: 14%;
-    margin-left: 43%;
-    margin-right: auto;
+    width: 100%;
 }
 
 #classes{
     width: 100%;
 }
+
 #classes td{
     background-color: azure;
+}
+
+#classes th{
+    background-color: #00589b;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    margin: 0%;
+    padding: 0%;
+}
+
+header{
+    display: flex;
+    height: 8%;
+}
+
+#divtitulo{
+    width: 80%;
+}
+
+#divtitulo h1{
+    color: #00589b;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: end ;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#divimg{
+    width: 20%;
 }

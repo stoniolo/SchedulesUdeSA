@@ -12,7 +12,7 @@ async function loadTable(url, table){
 function show(data) {
     let tab = 
         `<tr>
-          <th style=>Fecha</th>
+          <th>Fecha</th>
           <th>Dia</th>
           <th>Hora desde</th>
 
@@ -29,7 +29,8 @@ function show(data) {
     // Loop to access all rows 
     for (let r of data.datos) 
     {
-        if(r.sede == 'Callao'){
+        console.log(r.sede);
+        if(r.sede == 'Victoria'){
     tab += `<tr> 
     <td>${r.fecha} </td>
     <td>${r.dia}</td>
