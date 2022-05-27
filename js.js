@@ -12,8 +12,8 @@ async function loadTable(url, table){
 function show(data) {
     let tab = 
         `<tr>
-          <th>Fecha</th>
-          <th>Dia</th>
+          
+
           <th>Hora desde</th>
 
 
@@ -29,11 +29,11 @@ function show(data) {
     // Loop to access all rows 
     for (let r of data.datos) 
     {
-        console.log(r.sede);
+        //console.log(r.sede);
         if(r.sede == 'Victoria'){
     tab += `<tr> 
-    <td>${r.fecha} </td>
-    <td>${r.dia}</td>
+    
+    
     <td>${((r["hora desde"]/100) - ((r["hora desde"]%100)/100)) + ':' + r["hora desde"]%100 + ' - ' + ((r["hora hasta"]/100) - ((r["hora hasta"]%100)/100)) + ':' + r["hora hasta"]%100 }</td> 
 
 
@@ -47,6 +47,7 @@ function show(data) {
     </tr>`;
         }
     }
+    tab.className="classes";
     // Setting innerHTML as tab variable
     document.getElementById("classes").innerHTML = tab;
 }

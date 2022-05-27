@@ -12,17 +12,24 @@ thead{
 
 #classes{
     width: 100%;
+    height: 90%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    padding: 0px;
+    background-color: grey;
 }
 
 #classes td{
     background-color: azure;
+
+    margin: 0%;
+    padding: 0%;
 }
 
 #classes th{
     background-color: #00589b;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
+
     margin: 0%;
     padding: 0%;
 }
