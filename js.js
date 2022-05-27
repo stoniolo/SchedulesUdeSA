@@ -22,12 +22,10 @@ function show(data) {
     
     // Loop to access all rows 
     var x = 2;
-    var date = new Date();
-    var today = 'CARTELERA DE ACTIVIDADES ' + date.getDate() + '/' + date.getMonth();
     for (let r of data.datos) 
     {
         //console.log(r.sede);
-        if(r.sede == 'Riobamba')
+        if(r.sede == 'Callao')
         {
             var f = x % 2;
             switch(f)
@@ -61,9 +59,14 @@ function show(data) {
     // Setting innerHTML as tab variable
     document.getElementById("classes").innerHTML = tab;
 
-    document.getElementById("titulo").innerHTML = today;
+    document.getElementById("titulo").innerHTML = createTitle();
 }
 
+function createTitle(){
+    var date = new Date();
+    var today = 'CARTELERA DE ACTIVIDADES ' + date.getDate() + '/' + date.getMonth();
+    return today;
+}
 
 loadTable("./clases.json", document.querySelector("table"));
 
