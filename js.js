@@ -25,7 +25,7 @@ function show(data) {
     for (let r of data.datos) 
     {
         //console.log(r.sede);
-        if(r.sede == 'Callao')
+        if(r.sede == 'Suipacha')
         {
             var f = x % 2;
             switch(f)
