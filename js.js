@@ -1,6 +1,8 @@
+
+//////////////////////////////////functions///////////////////////////////////
+
+// Loads the web with the fetched data
 async function loadTable(url, table){
-    const tableHead = await table.querySelector("thead");
-    const tableBody = await table.querySelector("tbody");
     const response = await fetch(url);
     const data = await response.json();
 
@@ -8,30 +10,38 @@ async function loadTable(url, table){
     show(data);
 }
 
+// Creation of the table head(column names 1 to 5)
 
-function show(data) {
-    let tab = 
+function createTableHead(head1,head2,head3,head4,head5,head6) {
+    let table = 
         `<tr>
-          <th>HORARIO</th>
-          <th>MATERIA / ACTIVIDAD</th>
-          <th>GRADO / POSGRADO</th>
-          <th>PROFESOR</th>
-          <th>AULA</th>
-          <th>PISO</th>
+          <th>${head1}</th>
+          <th>${head2}</th>
+          <th>${head3}</th>
+          <th>${head4}</th>
+          <th>${head5}</th>
+          <th>${head6}</th>
          </tr>`;
-    
-    // Loop to access all rows 
-    var x = 2;
-    for (let r of data.datos) 
-    {
-        //console.log(r.sede);
-        if(r.sede == 'Suipacha')
+         return table;
+         
+}
+
+// Creation of the table rows, recieves 'sede' to filter the results.
+
+function createTableRows(data, sede){
+    let table = ''; // No unwanted empty rows
+    var x = 2; // Declaration of var to color the rows of the table (odd = white / even = gray)
+
+    for (let r of data.datos) {
+
+        if(r.sede == sede) // Filter classes by 'sede'
         {
-            var f = x % 2;
+            
+            var f = x % 2; // odd or even
             switch(f)
             {
                 case 0:
-                    tab += `<tr> 
+                    table += `<tr> 
                     <td style="background-color: #00589b ; color: white;" >${((r["hora desde"]/100) - ((r["hora desde"]%100)/100)) + ':' + r["hora desde"]%100 + ' a ' + ((r["hora hasta"]/100) - ((r["hora hasta"]%100)/100)) + ':' + r["hora hasta"]%100 }</td> 
                     <td>${r["nombre de materia"]}</td>
                     <td>${r["tipo de clase"]} </td>
@@ -43,7 +53,7 @@ function show(data) {
                 break;
 
                 case 1:
-                    tab += `<tr> 
+                    table += `<tr> 
                     <td style="background-color: #00589b ; color: white;" >${((r["hora desde"]/100) - ((r["hora desde"]%100)/100)) + ':' + r["hora desde"]%100 + ' a ' + ((r["hora hasta"]/100) - ((r["hora hasta"]%100)/100)) + ':' + r["hora hasta"]%100 }</td> 
                     <td style="background-color: #dddddd" ;>${r["nombre de materia"]}</td>
                     <td style="background-color: #dddddd" ;>${r["tipo de clase"]}</td>   
@@ -55,8 +65,17 @@ function show(data) {
             }
         }
     }
-    tab.className="classes";
-    // Setting innerHTML as tab variable
+    return table;
+}
+
+// Creates the table and title and sends them to the HTML elements
+function show(data) {
+
+    let tab = createTableHead("HORARIO","MATERIA / ACTIVIDAD", "GRADO / POSGRADO", "PROFESOR", "AULA", "PISO")  
+    
+    tab += createTableRows(data, 'Callao') ;
+
+    //set the data to the HTML elemtents
     document.getElementById("classes").innerHTML = tab;
 
     document.getElementById("titulo").innerHTML = createTitle();
@@ -64,9 +83,12 @@ function show(data) {
 
 function createTitle(){
     var date = new Date();
-    var today = 'CARTELERA DE ACTIVIDADES ' + date.getDate() + '/' + date.getMonth();
-    return today;
+    var title = 'CARTELERA DE ACTIVIDADES ' + date.getDate() + '/' + date.getMonth();
+    return title;
 }
+
+
+/////////////////////////MAIN/////////////////////////
 
 loadTable("./clases.json", document.querySelector("table"));
 
