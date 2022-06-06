@@ -36,13 +36,20 @@ function createTableRows(data, sede){
 
         if(r.sede == sede) // Filter classes by 'sede'
         {
+            let horad;
+            if(r["hora desde"]%100 == 0) {horad = r["hora desde"]/100 + ':' + '00';}
+            else {horad = ((r["hora desde"]/100) - ((r["hora desde"]%100)/100)) + ':' + r["hora desde"]%100;}
+
+            let horah;
+            if(r["hora hasta"]%100 == 0) {horah = r["hora hasta"]/100 + ':' + '00';}
+            else {horah = ((r["hora hasta"]/100) - ((r["hora hasta"]%100)/100)) + ':' + r["hora hasta"]%100;}
             
             var f = x % 2; // odd or even
             switch(f)
             {
                 case 0:
-                    table += `<tr> 
-                    <td style="background-color: #00589b ; color: white;" >${((r["hora desde"]/100) - ((r["hora desde"]%100)/100)) + ':' + r["hora desde"]%100 + ' a ' + ((r["hora hasta"]/100) - ((r["hora hasta"]%100)/100)) + ':' + r["hora hasta"]%100 }</td> 
+                    table += `<tr>
+                    <td style="background-color: #00589b ; color: white;" >${horad + ' - ' + horah}</td> 
                     <td>${r["nombre de materia"]}</td>
                     <td>${r["tipo de clase"]} </td>
                     <td>${r["apellido y nombre"]}</td>   
@@ -54,7 +61,7 @@ function createTableRows(data, sede){
 
                 case 1:
                     table += `<tr> 
-                    <td style="background-color: #00589b ; color: white;" >${((r["hora desde"]/100) - ((r["hora desde"]%100)/100)) + ':' + r["hora desde"]%100 + ' a ' + ((r["hora hasta"]/100) - ((r["hora hasta"]%100)/100)) + ':' + r["hora hasta"]%100 }</td> 
+                    <td style="background-color: #00589b ; color: white;" >${horad + ' - ' + horah}</td> 
                     <td style="background-color: #dddddd" ;>${r["nombre de materia"]}</td>
                     <td style="background-color: #dddddd" ;>${r["tipo de clase"]}</td>   
                     <td style="background-color: #dddddd" ;>${r["apellido y nombre"]} </td>
@@ -63,6 +70,7 @@ function createTableRows(data, sede){
                     </tr>`;
                     x++;
             }
+            hora = null;
         }
     }
     return table;

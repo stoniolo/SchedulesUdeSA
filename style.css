@@ -3,7 +3,7 @@ html{
     height: 1080px;
 }
 body{
-    background-color: azure;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     height: 930px;
@@ -64,4 +64,19 @@ header{
 
 #divimg{
     width: 20%;
+}
+
+#container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sedes{
+    width: 200px;
+    height: 200px;
+    color: #00589b;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: beige;
 }
