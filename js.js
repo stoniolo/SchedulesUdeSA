@@ -36,25 +36,27 @@ function createTableRows(data, sede){
 
         if(r.sede == sede) // Filter classes by 'sede'
         {
+            //start and end time formatting
             let horad;
-            if(r["hora desde"]%100 == 0) {horad = r["hora desde"]/100 + ':' + '00';}
-            else {horad = ((r["hora desde"]/100) - ((r["hora desde"]%100)/100)) + ':' + r["hora desde"]%100;}
+            if(r["hora_desde"]%100 == 0) {horad = r["hora_desde"]/100 + ':' + '00';}
+            else {horad = ((r["hora_desde"]/100) - ((r["hora_desde"]%100)/100)) + ':' + r["hora_desde"]%100;}
 
             let horah;
-            if(r["hora hasta"]%100 == 0) {horah = r["hora hasta"]/100 + ':' + '00';}
-            else {horah = ((r["hora hasta"]/100) - ((r["hora hasta"]%100)/100)) + ':' + r["hora hasta"]%100;}
+            if(r["hora_hasta"]%100 == 0) {horah = r["hora_hasta"]/100 + ':' + '00';}
+            else {horah = ((r["hora_hasta"]/100) - ((r["hora_hasta"]%100)/100)) + ':' + r["hora_hasta"]%100;}
             
-            var f = x % 2; // odd or even
+            var f = x % 2; // odd or even row?
+
             switch(f)
             {
                 case 0:
                     table += `<tr>
                     <td style="background-color: #00589b ; color: white;" >${horad + ' - ' + horah}</td> 
-                    <td>${r["nombre de materia"]}</td>
-                    <td>${r["tipo de clase"]} </td>
-                    <td>${r["apellido y nombre"]}</td>   
-                    <td>${r["aula asignada"]}</td>
-                    <td>${r.edificio}</td>        
+                    <td>${r["nombre_de_materia"]}</td>
+                    <td>${r["unidad"]} </td>
+                    <td>${r["apellido_nombre"]}</td>   
+                    <td>${r["aula_asignada"]}</td>
+                    <td>${r["piso"]}</td>        
                     </tr>`;
                     x++;
                 break;
@@ -62,11 +64,11 @@ function createTableRows(data, sede){
                 case 1:
                     table += `<tr> 
                     <td style="background-color: #00589b ; color: white;" >${horad + ' - ' + horah}</td> 
-                    <td style="background-color: #dddddd" ;>${r["nombre de materia"]}</td>
-                    <td style="background-color: #dddddd" ;>${r["tipo de clase"]}</td>   
-                    <td style="background-color: #dddddd" ;>${r["apellido y nombre"]} </td>
-                    <td style="background-color: #dddddd" ;>${r["aula asignada"]}</td>
-                    <td style="background-color: #dddddd" ;>${r.edificio}</td>        
+                    <td style="background-color: #dddddd" ;>${r["nombre_de_materia"]}</td>
+                    <td style="background-color: #dddddd" ;>${r["unidad"]}</td>   
+                    <td style="background-color: #dddddd" ;>${r["apellido_nombre"]} </td>
+                    <td style="background-color: #dddddd" ;>${r["aula_asignada"]}</td>
+                    <td style="background-color: #dddddd" ;>${r["piso"]}</td>        
                     </tr>`;
                     x++;
             }
@@ -98,6 +100,6 @@ function createTitle(){
 
 /////////////////////////MAIN/////////////////////////
 
-loadTable("./clases.json", document.querySelector("table"));
+loadTable("./cartelera.json", document.querySelector("table"));
 
 
