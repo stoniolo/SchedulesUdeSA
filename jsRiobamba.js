@@ -112,7 +112,7 @@ function show(data) {
 
     let tab = createTableHead("HORARIO","MATERIA / ACTIVIDAD", "GRADO / POSGRADO", "PROFESOR", "AULA", "PISO")  
     
-    tab += createTableRows(data, 'Callao') ;
+    tab += createTableRows(data, 'Riobamba') ;
 
     //set the data to the HTML elemtents
     document.getElementById("classes").innerHTML = tab;
@@ -130,5 +130,3 @@ function createTitle(){
 /////////////////////////MAIN/////////////////////////
 
 loadTable("./cartelera.json", document.querySelector("table"));
-
-
